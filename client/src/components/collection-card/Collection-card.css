@@ -1,0 +1,80 @@
+   
+
+  a:link {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: azure;
+    text-decoration: none;
+  }
+
+  
+
+  .row{
+    display: flex;
+  font-size: 30px;
+  text-align: center;
+  /* background-color: #7d7d7d; */
+  color: #000000;
+  font-weight: bold;
+  justify-content: space-around;
+  padding-left: 125px;
+  padding-top: 50px;
+  width: 990px;
+  height: 175px;
+  padding-bottom: 125px;
+  }
+
+  .collection-card{
+  background-color: white;
+    background-color: #dad3d3;
+    width: 180px;
+  height: 280px;
+    margin: 10px;
+    text-align: center;
+    font-size: 10px;
+    border-radius: 7.5px;
+    padding-top:20px;
+    color: #000;
+    
+    /* line-height: 1.5; */
+  }
+
+  .collection-card img{
+    /* width: 125px; */
+  height: 175px;
+  align-items: center;
+  /* padding-top: 20px; */
+  }
+
+  .collection-card-desc{
+  font-size: 1rem;
+  font-family:Inter Tight ;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin-top:10px;
+  color: #000;
+  }
+  .collection-card-brand{
+  font-weight: bold;
+  font-family:Inter Tight ;
+  }
+
+  .column .price{
+    font-size: 15px;
+    /* font-family: Inter Tight; */
+    /* margin: 0%; */
+  }

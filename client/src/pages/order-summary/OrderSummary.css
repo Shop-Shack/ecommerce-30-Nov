@@ -1,0 +1,38 @@
+.orderSummary{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.order-container{
+    display:flex;
+    flex-direction: column;
+    /* justify-content:center; */
+    align-items: center;
+    /* gap:1rem; */
+    margin-top: 2rem;
+    /* width: 80vw; */
+    /* background-color:red; */
+    
+    
+}
+
+.order-title{
+    font-size:1.5rem;
+    color:white;
+}
+.orders{
+    margin-left: 8rem;
+    display:flex;
+    flex-direction:row;
+    /* justify-content:space-around; */
+    flex-wrap: wrap;
+
+    /* overflow:scroll */
+    /* gap: 1rem; */
+
+}
+
+
+

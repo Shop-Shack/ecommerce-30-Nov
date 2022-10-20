@@ -1,0 +1,121 @@
+/* body{
+    font-family: 'Prata', serif;
+    margin:0;
+    top: 0;
+     left: 0; 
+      background-color: white;
+     width: 100vw;
+     background-size: 100%;
+     color: azure;
+     
+} */
+
+a:link {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: azure;
+    text-decoration: none;
+  }
+  
+   a:active {
+    color: azure;
+    text-decoration: none;
+  }
+ 
+ 
+  /* .orderplaced-box{
+   padding-top: 50px;
+   padding-left: 185px;
+  } */
+ 
+  .orderBox {
+   align-self: center;
+   width: 975px;
+   height: 225px;
+   background-color: #d9d9d9;
+   box-shadow: 10px 10px 20px rgb(103, 101, 101);
+  }
+ 
+  .orderBox .message{
+   /* top: 182px;
+   left: 141px; */
+   padding-left: 40px;
+   font-size: 28px;
+   font-weight: 800;
+   font-family: Solway;
+   color: #2f982d;
+   display: inline-block;
+   width: 609px;
+   height: 53px;
+  }
+ 
+ 
+  .orderDTopic p, .orderTopic p{
+   font-weight: 900;
+   font-size: 16px;
+   /* width: 70%; */
+  }
+ 
+  .orderDContent p, .orderContent p{
+   font-weight: 500;
+   font-size: 15px;
+   font-family: Poppins;
+   padding-left: 9px;
+   top: 500px;
+  }
+ 
+  .orderDetails{
+   display:flex;
+   color: #000; 
+   padding-left: 40px;
+   height: 45px;
+   /* justify-content: space-around; */
+  }
+  
+  .orderDelivery{
+   display:flex;
+   color: #000; 
+   padding-top: 0px;
+   padding-left: 40px;
+   /* justify-content: space-around; */
+  }
+ 
+ 
+ .orderImage{
+   position: absolute; 
+   top: 120px;
+   left: 925px;
+   border-radius: 5px;
+   width: 143px;
+   height: 175px;
+   object-fit: cover;
+ }
+ 
+ 
+ 
+ 
+ .contShop{
+  position: absolute; 
+   background-color: black;
+   color: azure;
+   border-radius: 5px;
+   left: 650px;
+   top: 255px; 
+   height: 30px;
+   font-weight: 200;
+   width: 150px;
+   box-shadow: 10px 10px 20px rgb(194, 193, 193);
+   font-size: 15px;
+   text-align: center;
+   padding-top: 0.5rem;
+ }
+
+

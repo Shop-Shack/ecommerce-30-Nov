@@ -1,0 +1,170 @@
+body{
+    background-color: rgb(0, 0, 0);
+    background-image: none;
+    font-size: 20px;
+    /* overflow: hidden; */
+    margin: 0;
+    padding: 0;
+}
+
+.chkout-lr-cont{
+    display: flex;
+    align-items: center;
+    background-color: black;
+}
+.chkout-left{
+    background-color: rgb(255, 255, 255);
+    width: 50%;
+    height: 100vh;
+    color: rgb(6, 1, 1);
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* align-content: center; */
+    padding-top: 4rem;
+    gap: 1rems;
+    /* width: 45vw; */
+    padding-left: 30px;
+  
+}
+.chkout-right{
+    background-color: rgb(0, 0, 0);
+    width: 50%;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+    flex-direction: column;
+    align-items: center;
+    /* padding-top: 4rem; */
+    
+    /* gap: 2rems; */
+    z-index: 999;
+
+}
+
+.chkout-cod-online{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:400px;
+   
+
+}
+.chkout-outline{
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width:470px;
+  height: 470px;
+  /* padding: 0.1rem; */
+  gap: 1.5rem;
+  /* left: 300px; */
+
+  
+  /* z-index: 999; */
+  padding-left: 65px;
+}
+.chkout-contactinfo{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    
+
+}
+
+.chkout-deliinfo{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100px;
+
+}
+.chkout-payment{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height:80px;
+
+    
+}
+
+
+.chkout-name-txt-in,.chkout-phone-txt-in,.chkout-email-txt-in,.chkout-addr-txt-in{
+    width: 450px;
+    height: 20px;
+    border-radius:7px;
+}
+
+.chkout-py-COD{
+    
+ color: black;
+ /* padding: 10px 20px; */
+ padding-top: 3px;
+ padding-bottom: 3px;
+ padding-left: 3px;
+ padding-right: 3px;
+ border-radius: 4px;
+ border:1px solid rgb(15, 13, 13);
+ border-width: 1.5px;
+
+}
+
+.chkout-py-onlinePy{
+    color: black;
+ /* padding: 10px 20px; */
+ padding-top: 3px;
+ padding-bottom: 3px;
+ padding-left: 3px;
+ padding-right: 3px;
+ border-radius: 4px;
+ border:1px solid rgb(15, 13, 13);
+ border-width: 1.5px;
+
+}
+.chkout-outline-right{
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 10px;
+   
+
+}
+.chkout-img-div{
+    padding-top: 0;
+    width: 300px;
+    height: 300px;
+}
+.chkout-img{
+    width: 300px;
+    height:300px;
+}
+.chkout-shirttxt{
+    width: 200px;
+    padding: 7px 7px;
+    text-align: center;
+   
+}
+.chkout-size,.chkout-quant,.chkout-price{
+    padding: 7px 7px;
+}
+.chkout-chkout{
+    width: 400px;
+    height: 33px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 0.4px 0.4px;
+    font-size: 18px;
+   
+    text-align:center;
+}
+.chkout-shirttxt,.chkout-size,.chkout-quant,.chkout-price{
+    font-size:18px ;
+}

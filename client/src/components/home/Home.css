@@ -1,0 +1,220 @@
+  
+  .homepage-page{
+    overflow-x:hidden;
+  }
+  .homepage-image-1-icon1 {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 750px;
+    height: 400px;
+    object-fit: cover;
+    padding-top: 0;
+  }
+  
+  .homepage-page .homepage-onClickCategories .homepage-ShopNow{
+    position: absolute;
+    top: 80px;
+    left: 749px;
+    background-color:#CBC0B7;
+    /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); */
+      width: 531px; 
+      /* width:100vw; */
+    height: 400px;
+    border-width: 0;
+  }
+  
+  .homepage-page .homepage-onClickCategories .homepage-ShopNow button{
+    position: absolute;
+    align-items: center;
+    top: 175px;
+    left: 200px;
+    height: 50px;
+    width: 150px;
+    font-family: 'Dancing Script' cursive;
+    background-color: black;
+    color: azure;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 750;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* a:link {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: azure;
+    text-decoration: none;
+  } */
+  
+  .homepage-page .homepage-showCategories{
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+  }
+  /* 
+  .showCategories .kidsWear .kids{
+  
+    position: absolute;
+    padding-top: 510px; 
+    /* top: 100px; 
+    padding-left: 55px;
+    width: 325px;  
+    color: azure;
+  }
+  
+  .showCategories .kidsWear p{
+  
+    position: absolute;
+    align-self: center;
+    padding-top: 580px; 
+    /* top: 100px; 
+    padding-left: 140px;
+    width: 325px;  
+    color: azure;
+    font-size: 25px;
+    font-family:'Dancing Script' cursive ;
+    font-weight: 1000;
+  }
+  .showCategories .womensWear .women{
+    position: absolute;
+    padding-top: 510px; 
+    /* top: 100px; 
+    padding-left: 55px;
+    width: 325px;  
+    color: azure;
+  
+  }*/
+  
+  /* .showCategories .womensWear .p{
+    position: absolute;
+    align-self: center;
+    padding-top: 580px;  */
+    /* top: 100px; 
+    /* padding-left: 140px; 
+    left: 1000px;
+    width: 325px;  
+    color: azure;
+    font-size: 25px;
+    font-family:'Dancing Script' cursive ;
+    font-weight: 1000;
+  
+  }
+  
+  .showCategories .mensWear .men{
+    position: absolute;
+    padding-top: 510px; 
+    /* top: 100px; 
+    padding-left: 55px;
+    width: 325px;  
+    color: azure;
+  
+  } */
+  
+  .homepage-showCategories {
+    display: flex;
+    padding-top: 450px;
+    width: 100vw;
+     
+    /* border-radius: 50px; */
+  }
+  
+  .homepage-Wear {
+    flex: 33.33%;
+    padding: 50px;
+    width: 100vw;
+    
+    
+  }
+  .homepage-Wear img {
+    width:100%;
+
+    
+  }
+  
+  .homepage-showCategories .homepage-Wear .homepage-align-center{
+    /* align-self: center; */
+    /* border-radius: 25px; */
+    color: azure;
+    transform: translate(90px, -135px);
+    font-weight: 1000;
+    font-size: larger;
+    
+   
+    padding-left: 10px;
+    
+  }
+  .homepage-align-end{
+    align-self: flex-end;
+  }
+  .homepage-Wear img{
+    border-radius: 5px;
+  }
+  
+  .homepage-showCategories .homepage-mensWear .p{
+    position: absolute;
+    align-self: center;
+    padding-top: 580px; 
+    /* top: 100px; */
+    padding-left: 140px;
+    width: 325px;  
+    color: azure;
+    font-size: 25px;
+    font-family:'Dancing Script' cursive ;
+    font-weight: 1000;
+  
+  }
+  
+  
+  .homepage-showCategories a:link {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .homepage-showCategories a:hover {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .homepage-showCategories a:visited {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .homepage-showCategories a:active {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .navbar a:link {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .navbar a:hover {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .navbar a:visited {
+    color: azure;
+    text-decoration: none;
+  }
+  
+  .navbar a:active {
+    color: azure;
+    text-decoration: none;
+  }

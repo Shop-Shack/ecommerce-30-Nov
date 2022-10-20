@@ -1,0 +1,191 @@
+
+/* @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'); */
+
+
+
+ 
+.contact{
+    /* padding-left: 50vw; */
+    text-align: center;
+    font-size: 1rem;
+    font-family: Prata;
+    margin-top: 5rem;
+    display:flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    color: #fff;
+}
+
+/* .contactOurTeam{
+ 
+    font-size: 30px;
+    padding-top: 0px;
+    text-align: center;
+} */
+
+.contact-content{
+    text-align: center;
+    font-size: 20px;
+    font-family: Prata;
+}
+
+#social {
+    margin: 20px 10px;
+    text-align: center;
+  }
+  
+  .smGlobalBtn { /* global button class */
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border:2px solid #ddd; /* add border to the buttons */
+      box-shadow: 0 3px 3px #999;
+      padding: 0px;
+      text-decoration: none;
+      text-align: center;
+      color: #fff;
+      font-size: 25px;
+      font-weight: normal;
+      line-height: 2em;
+      border-radius: 27px;
+      -moz-border-radius:27px;
+      -webkit-border-radius:27px;
+  }
+  
+  /* facebook button class*/
+  .facebookBtn{
+      background: #4060A5;
+      width:4rem;
+      height:4rem;
+      border-radius:50%;
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content:center;
+  }
+  .facebookBtn svg{
+      
+      font-size: 2rem;
+      
+  }
+  
+ 
+  
+  .facebookBtn:hover{
+      color: #4060A5;
+      background: #fff;
+      border-color: #4060A5; /* change the border color on mouse hover */
+  }
+  
+  /* twitter button class*/
+  .twitterBtn{
+      background: #00ABE3;
+      width:4rem;
+      height:4rem;
+      border-radius:50%;
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content:center;
+  }
+  
+  .twitterBtn svg{
+      
+    font-size: 2rem;
+}
+  
+  .gmailBtn svg{
+      
+    font-size: 2rem;
+}
+  
+  .instagramBtn svg{
+      
+    font-size: 2rem;
+}
+  .linkedInBtn svg{
+      
+    font-size: 2rem;
+}
+  
+  
+  .twitterBtn:hover{
+        color: #00ABE3;
+        background: #fff;
+        border-color: #00ABE3;
+  }
+  
+  /* google plus button class*/
+  .gmailBtn{
+      background: #e64522;
+      width:4rem;
+      height:4rem;
+      border-radius:50%;
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content:center;
+  }
+  
+ 
+  
+  .gmailBtn:hover{
+        color: #e64522;
+        background: #fff;
+        border-color: #e64522;
+  }
+  
+  /* linkedin button class*/
+  .linkedInBtn{
+      background: #0094BC;
+      width:4rem;
+      height:4rem;
+      border-radius:50%;
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content:center;
+  }
+  
+ 
+  
+  .linkedInBtn:hover{
+        color: #0094BC;
+        background: #fff;
+        border-color: #0094BC;
+  }
+  
+  /* pinterest button class*/
+  .instagramBtn{
+      background: #cb2027;
+      width:4rem;
+      height:4rem;
+      border-radius:50%;
+      display:flex;
+      flex-direction: row;
+      align-items:center;
+      justify-content:center;
+  }
+  
+  
+  
+  .instagramBtn:hover{
+        color: #cb2027;
+        background: #fff;
+        border-color: #cb2027;
+  }
+  
+  /* tumblr button class*/
+  
+  .contact-icons {
+   
+    /* padding-top: 500px; */
+    display: flex;
+    
+    gap: 1rem;
+    justify-content:center;
+  }
+  
+  

@@ -1,0 +1,30 @@
+{
+  "name": "ecommerce-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SrushtiHaryan/Shop.Shack-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SrushtiHaryan/Shop.Shack-1/issues"
+  },
+  "homepage": "https://github.com/SrushtiHaryan/Shop.Shack-1#readme",
+  "dependencies": {
+    "alert": "^5.1.1",
+    "axios": "^1.1.3",
+    "concurrently": "^7.4.0",
+    "mongoose": "^6.6.5",
+    "popups": "^1.1.3"
+  }
+}

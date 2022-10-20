@@ -1,0 +1,186 @@
+/* .login-lr-cont{
+    background-color:#000;
+    display:flex;
+
+}
+.login-login-right-cont{
+    margin-left: 8rem;
+    display: flex;
+    flex-direction:column; 
+    align-items: center;
+}
+
+.login-heading svg{
+    font-size: 3rem;
+    color: white;
+}
+.login-heading {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+.login-outline{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+} */
+
+.login-lr-cont{
+    background-color:#000;
+}
+.login-lo_back{
+  height: 100%;
+  width: 50vw;
+  opacity: 0.login-8;
+}
+.login-heading{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 250px;
+ 
+}
+.login-heading svg{
+    font-size: 3rem;
+    color:#fff;
+}
+.login-ss_logo{
+  width: 59px;
+  height: 44px;
+}
+.login-lr-cont{
+  display: flex;
+}
+.login-left-cont {
+  /* position: absolute; */
+    /* background-color: aquamarine; */
+    /* float: left; */
+    width: 50%;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+    flex-direction: row;
+}
+.login-right-cont{
+
+  /* position: absolute; */
+    background-color: rgb(2, 0, 0);
+    /* float: right; */
+    width: 50%;
+    height: 100vh;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    gap: 1rems;
+    /* margin-left: 3rem; */
+   
+
+
+
+}
+.login-shopshack-text{
+    /* position: absolute; */
+    margin-bottom: 20px;
+    left: 900px;
+    font-size: 40px;
+    font-family: "Dancing Script";
+    color: #fff;
+    display: inline-block;
+    align-items: center;
+}
+.login-outline{
+
+  background-color: #000;
+  border: 3px solid #fdfdfd;
+  box-sizing: border-box;
+  width: 400px;
+  height: 400px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login-e-mail-div {
+  
+    display: flex;
+    flex-direction: column;
+    font-size: 1.login-25rem;
+    gap: 1rem;
+  }
+  .login-password-div {
+  
+    display: flex;
+    flex-direction: column;
+    font-size: 1.login-25rem;
+    gap: 1rem;
+  }
+  
+  .login-email-input{
+  /* position: absolute; */
+  top: 40px;
+ 
+  border-radius: 20px;
+  background-color: #fff;
+  border: 0.login-5px solid #000;
+  box-sizing: border-box;
+  width: 250px;
+  height: 30px;
+
+  text-align: center;
+
+}
+.login-password-input {
+ 
+  top: 40px;
+
+  border-radius: 20px;
+  background-color: #fff;
+  border: 0.login-5px solid #000;
+  box-sizing: border-box;
+  width: 250px;
+  height: 30px;
+
+  text-align: center;
+}
+
+
+.login-logreg{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  
+}
+.login-btn,.login-reg-btn,.login-g {
+
+ /* color: aqua; */
+ background-color: white;
+ color: black;
+ padding: 10px 20px;
+  border-radius: 8px;
+ 
+  
+
+}
+.login-g{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  height:1.4rem;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  align-items: center;
+
+}
+.login-GIcon{
+  position: relative;
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}

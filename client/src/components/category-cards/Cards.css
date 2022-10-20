@@ -1,0 +1,72 @@
+body{
+    background-color: #000;
+    background-image: url(../../../public/assets/images/bgImage.jpg);
+    background-size: 100%;
+    background-attachment: fixed;
+}
+.categories-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin: 3rem 0 0 0;
+
+}
+
+.category-title{
+    font-size:2rem;
+    font-family: Prata;
+    margin: 0 0 2rem 0;
+    color:white;
+    
+}
+
+.categories{
+    display: flex;
+    
+    flex-direction: row;
+    gap: 4rem;
+
+}
+
+.Card{
+    /* position: absolute; */
+    background-color: #000;
+    width:  20vw;
+    height: 60vh;
+    object-fit: cover;
+    color: rgb(255, 255, 255);
+    text-align:center;
+}
+.Card span{
+    position: absolute;
+    /* transform: translateY(10rem); */
+    transform: translate(4.2rem,9rem);
+   /* background-color:red; */
+   padding:1rem;
+    
+
+    font-size:2rem;
+
+}
+.Card img{
+    
+    background-color: red;
+    width:  20vw;
+    height: 60vh;
+    object-fit: cover;
+}
+.Card img:hover{
+   
+    opacity:0.3;
+    transition: all 0.8s ease;
+    transform: scale(0.9);
+
+}
+/* .Card img:hover + .Card span{
+    
+    background-color: red;
+    opacity:0.5;
+    color:white;
+    transition: all 1s ease;
+
+} */

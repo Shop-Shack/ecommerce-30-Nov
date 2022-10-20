@@ -1,0 +1,22 @@
+.collection-container{
+    display: flex;
+    flex-direction:column;
+    color: #fff;
+    align-items: center;
+    justify-content:space-around;
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+}
+
+.KidsCollection-title{
+    font-size:1.5rem;
+}
+
+.collection-card-container{
+    max-width: 80%;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    /* gap: 1rem; */
+
+}
