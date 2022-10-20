@@ -1,4 +1,6 @@
 const express = require("express");
+// var popups = require('popups');
+// import swal from 'sweetalert';
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -15,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true, }))
 
 const connectDb = () => {
   mongoose.connect("mongodb+srv://MD:MD2022@shopsackcluster.ersgwpa.mongodb.net/ShopShack", { useNewUrlParser: true });
-  console.log("Connected to the database");
+  console.log("Connected to the database ");
 }
 
 connectDb();
@@ -29,7 +31,7 @@ app.get("/", (req, res) => {
   res.json(
     { message: "Hello World!" });
 
-  console.log('Hello');
+  console.log('Hello ');
 
 });
 app.post("/hey", (req, res) => {
@@ -48,7 +50,7 @@ app.post("/register", (req, res) => {
   const { body } = req;
 
   var credential= new user_det();
-
+console.log(req.body);
 
   email = req.body.reg_email;
   password = req.body.reg_pass;
@@ -63,7 +65,7 @@ app.post("/register", (req, res) => {
   credential.name = name;
   credential.confirm_password = confPassword;
 
-  database.collection('usercredentials').find({ email_id :email, name:name}).toArray(function(err,items){
+  database.collection('usercredentials').find({ email_id :email}).toArray(function(err,items){
 
      
     if(err){
@@ -71,29 +73,47 @@ app.post("/register", (req, res) => {
     }
     if(items.length==0)
     {
-     console.log("not found");
-     res.redirect('/login');
+      if (password !== confPassword) {
+        res.redirect('/register');
+        // swal.alert('Dummy!');
+        alert('Dummy!');
+      } else {
+        console.log("unique");
+        database.collection('usercredentials').insertOne(credential, (err,collection)=> {
+          if(err){
+            console.log(err);
+            throw err;
+          }
+          console.log("Record inserted successfully");
+        });
+
+        // res.send('User registered!');
+        res.redirect('/login');
+      }
+     
+    //  res.redirect('/login');
     }
     else
     {
-      res.redirect('/');
+      console.log('Email ID exists')
+     return  res.redirect('/register');
     }
-  });
+  })
 
-  database.collection('usercredentials').insertOne(credential, (err,collection)=> {
-    if(err){
-      console.log(err);
-      throw err;
-    }
-    console.log("Record inserted successfully");
-  });
+  // database.collection('usercredentials').insertOne(credential, (err,collection)=> {
+  //   if(err){
+  //     console.log(err);
+  //     throw err;
+  //   }
+  //   console.log("Record inserted successfully");
+  // });
 
-  if (password !== confPassword) {
-    res.redirect('/register');
-    // alert('Dummy!');
-  } else {
-    res.redirect('/login');
-  }
+  // if (password !== confPassword) {
+  //   res.redirect('/register');
+  //   // alert('Dummy!');
+  // } else {
+  //   res.redirect('/login');
+  // }
 });
 
 app.post("/login", (req, res) => {

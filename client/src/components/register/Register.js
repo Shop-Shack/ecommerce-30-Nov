@@ -94,17 +94,17 @@ const Register = function(){
           <div class="register-outline">
     
             <div class="register-e-mail-div">
-              <div class="register-name-txt">Name</div>
-              <input class="register-name-input" name="reg_name" />
+              <div class="register-name-txt" >Name</div>
+              <input class="register-name-input" name="reg_name" required />
               <div class="register-email-txt">E-mail</div>
-              <input class="register-email-input" type="email" name="reg_email" />
+              <input class="register-email-input" type="email" name="reg_email" required/>
             </div>
     
             <div class="register-password-div">
               <div class="register-password-txt" >Password</div>
-              <input type="password" class="register-password-input" name="reg_pass" />
+              <input type="password" class="register-password-input" name="reg_pass" required/>
               <div class="register-password-conf">Confirm Password</div>
-              <input type="password" class="register-conf-password-input" name="reg_pass_conf"/>
+              <input type="password" class="register-conf-password-input" name="reg_pass_conf" required/>
             </div>
             
             <div class="register-Glogin">
