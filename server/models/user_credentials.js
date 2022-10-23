@@ -20,6 +20,10 @@ const user = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userIsGoog: {
+    type: Boolean,
+    required: false,
+  },
 });
 
 const FirstSch = mongoose.model("UserCredential", user);

@@ -154,13 +154,40 @@
   width: 60%;
   
 }
-.login-btn,.login-reg-btn,.login-g {
+.login-btn {
 
- /* color: aqua; */
+ 
  background-color: white;
  color: black;
  padding: 10px 20px;
   border-radius: 8px;
+  font-family: Prata;
+  font-size: 1rem;
+  
+  
+  
+}
+.login-reg-btn{
+
+  
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: Prata;
+  font-size: 1rem;
+ 
+  
+
+}
+.login-g {
+
+ 
+ background-color: white;
+ color: black;
+ padding: 10px 20px;
+  border-radius: 8px;
+  font-family: Prata;
  
   
 
@@ -176,6 +203,7 @@
   padding: 10px 20px;
   border-radius: 8px;
   align-items: center;
+  cursor:pointer;
 
 }
 .login-GIcon{
