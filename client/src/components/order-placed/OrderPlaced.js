@@ -9,7 +9,7 @@ const OrderPlacedConst = function () {
   // console.log(location);
 
   const del_date = new Date();
-  del_date.setDate(del_date.getDate() + 14);
+  del_date.setDate(del_date.getDate() + 2);
   const d_date = del_date.toDateString();
 
   return (
