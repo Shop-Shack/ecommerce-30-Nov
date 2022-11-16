@@ -61,6 +61,7 @@ body{
   gap: 1.5rem;
   /* left: 300px; */
 
+  justify-content: center;
   
   /* z-index: 999; */
   padding-left: 65px;
@@ -138,15 +139,16 @@ body{
 }
 .chkout-img-div{
     padding-top: 0;
-    width: 300px;
+    width: 250px;
     height: 300px;
 }
 .chkout-img{
-    width: 300px;
+    width: 250px;
     height:300px;
+    align-items: center;
 }
 .chkout-shirttxt{
-    width: 200px;
+    width: 400px;
     padding: 7px 7px;
     text-align: center;
    
@@ -167,4 +169,10 @@ body{
 }
 .chkout-shirttxt,.chkout-size,.chkout-quant,.chkout-price{
     font-size:18px ;
+}
+.chkout-outlline-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

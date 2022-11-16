@@ -18,6 +18,8 @@ import WomenCollection from './pages/WomenCollection/WomenCollection';
 import Categories from './pages/categories/Categories';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Login from './pages/Login/Login';
+import Cart from './pages/AddToCartPage/AddToCart';
+import CartProduct from "./components/cart-product/CartProduct";
 
 import  {BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 
@@ -27,8 +29,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar></Navbar>
-        {/* <Checkout></Checkout> */}
-        {/* <AboutUs></AboutUs> */}
+        
 
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -38,23 +39,20 @@ const App = () => {
           <Route path="/kids" element={<KidsCollection />} />
           <Route path="/men" element={<MenCollection />} />
           <Route path="/women" element={<WomenCollection />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/women/product/:id" element={<Product />} />
+          <Route path="/men/product/:id" element={<Product />} />
+          <Route path="/kids/product/:id" element={<Product />} />
+          <Route path="/checkout/:id" element={<Checkout />} />
           <Route path="/order-summary" element={<OrderSummary />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/orderPLace" element={<OrderPlaced />} />
+          <Route path="/orderPlace" element={<OrderPlaced />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/hey" element={<Product />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/add-to-cart" element={<Cart/>} />
           
         </Routes>
-        {/* <Contact></Contact>
-    <Categories></Categories>
-    <Homepage></Homepage> */}
-        {/* <WomenCollection></WomenCollection> */}
-        {/* <Contact></Contact> */}
-        {/* <Categories></Categories> */}
-        {/* <OrderSummary></OrderSummary> */}
-        {/* <Product></Product> */}
+        
       </div>
     </Router>
   );

@@ -10,6 +10,10 @@ const user = new mongoose.Schema({
     type: String,
     required: true,
   },
+  access_token: {
+    type: String,
+    required: true,
+  },
 
   password: {
     type: String,
@@ -22,8 +26,15 @@ const user = new mongoose.Schema({
   },
   userIsGoog: {
     type: Boolean,
-    required: false,
+    required: true,
   },
+  tokens: [{
+    token:{
+      type: String,
+      required: true
+
+    }
+  }]
 });
 
 const FirstSch = mongoose.model("UserCredential", user);

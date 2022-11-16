@@ -1,0 +1,26 @@
+.cart-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    /* padding-left: 30vw; */
+    color:black;
+}
+
+.main-cart-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color:white;
+
+}
+
+.cart-price-container{
+
+    margin-top:10vh;
+    left:75vw;
+    font-size:2rem;
+    position:fixed;
+    
+}

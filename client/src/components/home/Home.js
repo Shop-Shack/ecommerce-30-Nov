@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import "./Home.css";
 import { Link } from "react-router-dom";
@@ -9,8 +9,20 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import axios from 'axios';
+
 // import {MdOutlineShoppingCart} from 'react-icons/md';
 const Home = () => {
+
+  
+  axios.get('/')
+  .then(res=>{
+
+    console.log(res);
+
+  })
+
+
   return (
     <div class="homepage-page">
       <div class="homepage-onClickCategories">

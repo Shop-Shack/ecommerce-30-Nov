@@ -12,18 +12,19 @@ import axios from "axios"
 
 const Login = function () {
 
+  let googleDataResponse;
+
 
   const loginGoogle = useGoogleLogin({
-    onSuccess: async respose => {
+    onSuccess: async resp => {
       try {
         const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
           headers: {
-            "Authorization": `Bearer ${respose.access_token}`
+            "Authorization": `Bearer ${resp.access_token}`
           }
-        })
-          .then((res) => {
+        }).then((res) => {
 
-            const userGoogData = { ...res.data, userIsGoog: true };
+            const userGoogData = { ...resp.data, userIsGoog: true };
             console.log(userGoogData);
 
             axios.post("http://localhost:5000/login", userGoogData)
@@ -31,17 +32,23 @@ const Login = function () {
 
                 console.log(response);
                 if (response.data.redirect == '/') {
-                  window.location = "/"
+                  // window.location = "/"
                 } else if (response.data.redirect == '/login') {
                   window.location = "/login"
                 }
-              })
-              .catch(err => console.error(err));
+            })
+            .catch(err => console.error(err));
+
           })
           .catch(err => console.err(err));
 
 
+        console.log('resp');
+        console.log(resp);
+
+
       } catch (err) {
+
         console.log(err)
 
       }
@@ -82,9 +89,9 @@ const Login = function () {
             <button type="submit" class="login-btn">Login</button>
 
             <Link to="/register">
-            
-            <button  class="login-reg-btn">Register</button>
-              
+
+              <button class="login-reg-btn">Register</button>
+
             </Link>
 
           </div>

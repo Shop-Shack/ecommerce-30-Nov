@@ -7,15 +7,15 @@ import { SiGmail } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 
 
-const collectionCard = function () {
+const collectionCard = function ({dataPID, title, url, price, category}) {
   return (
     <div class="collection-card">
-    <Link to='/product'>
-        <img src="assets\images\kidsCollection-1.png" class="collection-cardimage" />
+    <Link to={`/${category}/product/${dataPID}`}>
+        <img src={url} class="collection-cardimage" />
         <div class="collection-card-desc">
           <div class="collection-card-brand">M&S COLLECTION</div>
-          <div class="collection-card-cloth-name">Denim Shirt</div>
-          <div class="collection-card-price">₹2,999.00</div>
+          <div class="collection-card-cloth-name">{title}</div>
+          <div class="collection-card-price">{price}</div>
         </div>
     </Link>
       </div>

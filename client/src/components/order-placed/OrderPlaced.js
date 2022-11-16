@@ -2,8 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./OrderPlaced.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const orderPlacedConst = function () {
+const OrderPlacedConst = function () {
+  const location = useLocation();
+  // console.log(location);
+
+  const del_date = new Date();
+  del_date.setDate(del_date.getDate() + 14);
+  const d_date = del_date.toDateString();
+
   return (
     <div class="orderplaced-box">
       <div class="orderBox">
@@ -12,9 +20,9 @@ const orderPlacedConst = function () {
           <div class="orderTopic">
             <p>Your order:</p>
           </div>
-          <img src="\assets\images\kidsCollection-1.png" class="orderImage" />
+          <img src={`${location.state.url}`} class="orderImage" />
           <div class="orderContent">
-            <p> M&S COLLECTION Denim Shirt</p>
+            <p> {location.state.title}</p>
           </div>
         </div>
         <div class="orderDelivery">
@@ -22,7 +30,7 @@ const orderPlacedConst = function () {
             <p>Estimated Delivery:</p>
           </div>
           <div class="orderDContent">
-            <p>Monday 19th-Sept</p>
+            <p>{d_date}</p>
           </div>
         </div>
         <div class="continueShopping">
@@ -35,4 +43,4 @@ const orderPlacedConst = function () {
   );
 };
 
-export default orderPlacedConst;
+export default OrderPlacedConst;
