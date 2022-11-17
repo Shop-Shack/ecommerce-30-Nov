@@ -211,13 +211,13 @@ app.post("/login", (req, res) => {
     let mailTransporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "srushti.haryan@spit.ac.in",
-        pass: "qiapbwwhfhncloyr",
+        user: "*********",
+        pass: "***********",
       },
     });
 
     let mailDetails = {
-      from: "srushti.haryan@spit.ac.in",
+      from: "*******",
       to: email,
       subject: "Welcome to Shop.Shack community.",
       text: "Thank you connecting with us. Happy Shopping! :)",
@@ -252,7 +252,7 @@ app.post("/login", (req, res) => {
 
               // const message = {
               //   to: email,
-              //   from: "manushree.dubey@spit.ac.in",
+              //   from: "",
               //   subject: "Login confirmation",
               //   text: "Thank you for logging in to ShopShack. Happy Shopping :)",
               //   html: "<h1>Hello from Shop Shack<h1>",
