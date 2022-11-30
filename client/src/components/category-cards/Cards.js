@@ -3,7 +3,7 @@ import React from 'react';
 import './Cards.css';
 import { HiShoppingBag, HiOutlineUserCircle } from 'react-icons/hi';
 import { MdOutlineShoppingCart } from 'react-icons/md';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const cards = function () {
     return (<div>
@@ -13,9 +13,9 @@ const cards = function () {
 
             </div>
             <div className="categories">
-                <Link to='/men'><div className="Card"><span id="card-1">Men</span><img src="assets\images\men.png"></img></div></Link>
-                <Link to='/kids'><div className="Card"><span id="card-2">Kids</span><img src="assets\images\kids.png"></img></div></Link>
-                <Link to='/women'><div className="Card"><span id="card-3">Women</span><img src="assets\images\women.png"></img></div></Link>
+                <Link to='/men'><div className="Card" id="men-card"><span id="card-1">Men</span><img src="assets\images\men.png" name="men-card"></img></div></Link>
+                <Link to='/kids'><div className="Card" id="kids-card"><span id="card-2">Kids</span><img src="assets\images\kids.png" name="kid-card"></img></div></Link>
+                <Link to='/women'><div className="Card" id="women-card"><span id="card-3">Women</span><img src="assets\images\women.png"></img></div></Link>
 
             </div>
 

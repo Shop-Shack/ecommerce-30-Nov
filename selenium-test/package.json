@@ -1,0 +1,18 @@
+{
+  "name": "selenium-test",
+  "version": "1.0.0",
+  "description": "Selenium Example Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Srushti",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "selenium-webdriver": "^4.6.1"
+  },
+  "devDependencies": {
+    "chromedriver": "^107.0.3"
+  }
+}

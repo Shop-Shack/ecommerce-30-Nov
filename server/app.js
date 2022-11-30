@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const user_det = require("./models/user_credentials");
 const order_det = require("./models/order_details");
+const add_to_cart_det = require("./models/user_add_to_cart");  
 const { cs } = require("date-fns/locale");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -51,15 +52,26 @@ var database = mongoose.connection;
 
 let email, password, confPassword, name, userToken;
 
-app.get("/", (req, res) => {
-  // console.log("Hello, The homepage is displayed...");
-  const token = req.cookies.jwt;
-  const verifyUser = jwt.verify(token, "shop.shack.madmanrush.spit.ac.in");
-  // console.log(verifyUser);
+// app.get("/", (req, res) => {
+//   // console.log("Hello, The homepage is displayed...");
+//   const token = req.cookies.jwt;
+//   const verifyUser = jwt.verify(token, "shop.shack.madmanrush.spit.ac.in");
+//   // console.log(verifyUser);
 
-  // console.log(`cookies: ${req.cookies.jwt}`);
-  return res.json({ message: "Hello, This is homepage!", ...verifyUser });
-});
+//   // console.log(`cookies: ${req.cookies.jwt}`);
+//   return res.json({ message: "Hello, This is homepage!", ...verifyUser });
+// });
+
+const getJWTDeets = function(token){
+
+  verifyUser = jwt.verify(token,"shop.shack.madmanrush.spit.ac.in");
+  console.log(verifyUser);
+  console.log('verified');
+
+      let redir = { redirect: "/", email:verifyUser.email}
+      res.json(redir);
+
+}
 
 app.get("/women", (req, res) => {
   res.json({ message: "Women's page is displayed" });
@@ -112,31 +124,32 @@ app.post("/register", (req, res) => {
   var credential = new user_det();
 
   if (body.reg_pass === body.reg_pass_conf) {
+
     email = req.body.reg_email;
     password = req.body.reg_pass;
     confPassword = req.body.reg_pass_conf;
     name = req.body.reg_name;
 
-    try {
-      const token = jwt.sign(
-        { email: email },
-        "shop.shack.madmanrush.spit.ac.in"
-      );
-      console.log(token);
-      userToken = token;
-      credential.tokens.push({ token: userToken });
+    // try {
+    //   const token = jwt.sign(
+    //     { email: email },
+    //     "shop.shack.madmanrush.spit.ac.in"
+    //   );
+    //   console.log(token);
+    //   userToken = token;
+    //   credential.tokens.push({ token: userToken });
 
-      res.cookie("jwt", token, {
-        expires: new Date(Date.now() + 120000),
-        httpOnly: true,
-      });
+    //   res.cookie("jwt", token, {
+    //     expires: new Date(Date.now() + 120000),
+    //     httpOnly: true,
+    //   });
 
-      console.log(`This is a cookie register${req.cookies.jwt}`);
+    //   console.log(`This is a cookie register${req.cookies.jwt}`);
 
-      // console.log(cookie);
-    } catch (err) {
-      console.log(err);
-    }
+    //   // console.log(cookie);
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
     credential.email_id = email;
     credential.password = password;
@@ -147,13 +160,18 @@ app.post("/register", (req, res) => {
       .collection("usercredentials")
       .find({ email_id: email })
       .toArray(function (err, items) {
+
         if (err) {
           console.log(err);
         }
+
         if (items.length == 0) {
           if (password !== confPassword) {
+
             res.redirect("/register");
+
           } else {
+
             database
               .collection("usercredentials")
               .insertOne(credential, (err, collection) => {
@@ -179,9 +197,18 @@ app.post("/register", (req, res) => {
   console.log({ ...req.body });
 });
 
+// app.get('/', (req,res)=>{
+
+// })
+
 app.post("/login", (req, res) => {
   let name, email, userToken;
   var credential = new user_det();
+
+  console.log(req.body)
+
+
+  
 
   const userGoogdata = req.body;
   console.log(userGoogdata);
@@ -195,32 +222,21 @@ app.post("/login", (req, res) => {
     ACCESS_TOKEN = req.body.access_token;
     console.log("in post/login" + ACCESS_TOKEN);
 
-    // const message = {
-    //   to: "madhura.chitale@spit.ac.in",
-    //   from: "manushree.dubey@spit.ac.in",
-    //   subject: "Login confirmation",
-    //   text: "Thank you for logging in to ShopShack. Happy Shopping :)",
-    //   html: "<h1>Hello from Shop Shack<h1>",
-    // };
-
-    // sgMail
-    //   .send(message)
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.log(error.msg));
+   
 
     let mailTransporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "*********",
-        pass: "***********",
+        user: "srushti.haryan@spit.ac.in",
+        pass: "qiapbwwhfhncloyr",
       },
     });
 
     let mailDetails = {
-      from: "*******",
+      from: "srushti.haryan@spit.ac.in",
       to: email,
       subject: "Welcome to Shop.Shack community.",
-      text: "Thank you connecting with us. Happy Shopping! :)",
+      text: "You just logged in through your google account.\nThank you connecting with us.\nHappy Shopping! :)",
     };
 
     mailTransporter.sendMail(mailDetails, function (err, data) {
@@ -230,6 +246,8 @@ app.post("/login", (req, res) => {
         console.log("Email sent successfully");
       }
     });
+
+
     database
       .collection("usercredentials")
       .find({ email_id: email })
@@ -246,36 +264,48 @@ app.post("/login", (req, res) => {
                 console.log(err);
                 throw err;
               }
-              console.log("google user Record inserted successfully");
+              console.log("Google user Record inserted successfully");
 
-              //mail sendgrid API used her
+              
 
-              // const message = {
-              //   to: email,
-              //   from: "",
-              //   subject: "Login confirmation",
-              //   text: "Thank you for logging in to ShopShack. Happy Shopping :)",
-              //   html: "<h1>Hello from Shop Shack<h1>",
-              // };
-
-              // sgMail
-              //   .send(message)
-              //   .then((response) => console.log("email sent"))
-              //   .catch((error) => console.log(error.msg));
-
-              let redir = { redirect: "/", ...userGoogdata };
+              let redir = { redirect: "/", ...userGoogdata, userGoog:true };
               return res.json(redir);
             });
         } else {
           console.log("This google user is existing");
-          let redir = { redirect: "/" };
+          let redir = { redirect: "/" , userGoog:true };
           return res.json(redir);
         }
       });
   } else {
     const { body } = req;
+
+    let verifyUser={};
+    console.log(body.access_token);
+
     email = req.body.log_email;
-    password = req.body.log_pass;
+    password = req.body.log_password;
+      
+
+    if(req.body.access_token===undefined){
+
+      email = req.body.log_email;
+      password = req.body.log_password;
+      
+      
+      
+    }else{
+      
+      verifyUser = jwt.verify(req.body.access_token,"shop.shack.madmanrush.spit.ac.in");
+      console.log(verifyUser);
+      console.log('verified');
+
+      let redir = { redirect: "/", token: req.body.access_token}
+      res.json(redir);
+    }
+
+    console.log(req.body)
+
 
     database
       .collection("usercredentials")
@@ -288,28 +318,62 @@ app.post("/login", (req, res) => {
           console.log("not found");
           res.redirect("/login");
         } else {
+          if(req.body.access_token==undefined){
           try {
+
             const token = jwt.sign(
               { email: email },
               "shop.shack.madmanrush.spit.ac.in"
             );
             console.log(token);
             userToken = token;
-            credential.tokens.push({ token: userToken });
-            res.cookie("jwt", token, {
-              expires: new Date(Date.now() + 120000),
-              httpOnly: true,
-            });
+            
 
-            console.log(`This is a cookie login ${req.cookies.jwt}`);
+            var myquery = { email_id: email };
+            var newvalues = { $set: { token: userToken } };
+            database
+              .collection("usercredentials")
+              .updateOne(myquery, newvalues, function (err, res) {
+                if (err) throw err;
+                console.log("1 document updated");
+                // database.close();
+              });
 
-            res.redirect("/");
+
+        
+
+              // localStorage.setItem('token',token);
+
+            // res.cookie("jwt", `${token}`, {
+            //   expires: new Date(Date.now() + 120000),
+            //   httpOnly: true,
+            // });
+
+            console.log(`This is a token login ${token}`);
+
+            let redir = { redirect: "/", token: userToken, userGoog:false}
+            res.json(redir)
+
+
           } catch (err) {
             console.log(err);
           }
+
+        }else{
+          console.log(`token existing: ${req.body.access_token}`);
+
+          let redir = { redirect: "/", token: userToken}
+          res.json(redir)
+
+
+        }
+          
         }
       });
   }
+
+  
+
 });
 
 app.post("/post", (req, res) => {
@@ -346,43 +410,32 @@ app.post("/checkout/:id", async (req, res) => {
   price = req.body.price;
   size = req.body.size;
   quantity = req.body.quantity;
+
+  let userGoog=req.body.userGoog;
   console.log(req.body);
-  console.log();
 
-  // del_date.setDate(del_date.getDate() + 30);
-  //set calendar
-  // var starttime = "09:00";
-  // var endtime = "11:00";
-  // var startdate = new Date();
-  // var enddate = startdate + 2;
-  // var orderPlaceddate = enddate + "T" + starttime + ":00+05:30";
-  // var orderDeliverydate = enddate + "T" + endtime + ":00+05:30";
 
-  // orderPlaceddate = orderPlaceddate.replaceAll(":", "");
-  // orderPlaceddate = orderPlaceddate.replaceAll("-", "");
-  // orderPlaceddate = orderPlaceddate.replaceAll(".", "");
+  if(req.body.userGoog=='true'){
 
-  // orderDeliverydate = orderDeliverydate.replaceAll(":", "");
-  // orderDeliverydate = orderDeliverydate.replaceAll("-", "");
-  // orderDeliverydate = orderDeliverydate.replaceAll(".", "");
-
-  const eventStartTime = new Date();
-  const eventEndTime = new Date();
-
-  eventEndTime.setDate(eventEndTime.getDate() + 2);
-  eventStartTime.setDate(eventStartTime.getDate() + 2);
-
-  eventEndTime.setMinutes(eventEndTime.getMinutes() + 40);
-
-  console.log(ACCESS_TOKEN);
-  // console.log(access_token);
+    
+    
+    const eventStartTime = new Date();
+    const eventEndTime = new Date();
+    
+    eventEndTime.setDate(eventEndTime.getDate() + 2);
+    eventStartTime.setDate(eventStartTime.getDate() + 2);
+    
+    eventEndTime.setMinutes(eventEndTime.getMinutes() + 40);
+    
+    console.log(ACCESS_TOKEN);
+    // console.log(access_token);
   oauth2Client.setCredentials({ access_token: ACCESS_TOKEN });
   const calendar = google.calendar("v3");
   const response = await calendar.events.insert({
     auth: oauth2Client,
     calendarId: "primary",
     requestBody: {
-      summary: "ShopShack product delivery",
+      summary: `Shop.Shack product delivery`,
       description:
         "This is to remind you that your order arrives today, please ensure that the order will be received. Happy Shopping!",
       // location: location,
@@ -399,11 +452,13 @@ app.post("/checkout/:id", async (req, res) => {
   });
 
   console.log("The event is created");
+}else{
+  console.log('u are not a google user')
+}
 });
 
 app.post("/checkout", (req, res) => {
   console.log(req.body);
-  // res.send(req.body);
   cname = req.body.checkout_name;
   cphone = req.body.checkout_phoneno;
   cemail = req.body.checkout_email;
@@ -420,7 +475,6 @@ app.post("/checkout", (req, res) => {
 
   orders.username = name;
   orders.product_name = cproduct_name;
-  // orders.product_cateogry = cproductcate;
   orders.product_img = cproductimg;
   orders.quantity = cquantity;
   orders.size = csize;
@@ -429,7 +483,6 @@ app.post("/checkout", (req, res) => {
   orders.email = cemail;
   orders.address = caddr;
   orders.dateOfBuy = convertDate(new Date());
-  // orders.dateOfDelivery;
   orders.totalPrice = ctotal_cost;
 
   console.log(orders);
@@ -444,6 +497,18 @@ app.post("/checkout", (req, res) => {
   });
 });
 
+
+app.post('/user-cart',(req,res)=>{
+
+
+  const orderData = req.body;
+
+  console.log(orderData)
+
+  const userCart = new add_to_cart_det();
+
+});
+
 function convertDate(str) {
   var date = new Date(str),
     mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -452,9 +517,6 @@ function convertDate(str) {
   return [date.getFullYear(), mnth, day].join("-");
 }
 
-// app.post("/post", (req, res) => {
-//   console.log("Connected to React");
-//   res.redirect("/");
-// });
+
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

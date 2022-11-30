@@ -8,7 +8,9 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link, useParams, useLocation } from "react-router-dom";
 import Axios from "axios";
 
-const ProductPage = function () {
+const ProductPage = function ({cartCount, setCartCount}) {
+
+  let [userGoog, setUserGoog]=useState(localStorage.getItem('userGoog'));
   const { id } = useParams();
   // console.log(useLocation());
   const { pathname } = useLocation();
@@ -58,7 +60,7 @@ const ProductPage = function () {
   const [productItem, setProductItem] = useState({});
 
   const userSize = function (e) {
-    console.log(e);
+    console.log(e.target.id);
     setActiveSize(e.target.id);
   };
 
@@ -88,15 +90,45 @@ const ProductPage = function () {
   // console.log(clothes);
 
   const postToExpress = () => {
+
+    
     Axios.post(`http://localhost:5000/checkout/:${id}`, {
       quantity: `${quantity}`,
       size: activeSize,
       title: productItem.title,
       url: productItem.url,
       price: productItem.price,
+      userGoog: userGoog
     });
     console.log(activeSize);
   };
+
+  const addProductToCart = ()=>{
+
+
+    // cartCount=cartCount+1;
+    setCartCount(cartCount+1);
+
+    
+
+    //handleGoogleWalaToo
+
+    Axios.post('http://localhost:5000/user-cart',{
+
+      token: localStorage.getItem('token'),
+      productID: id,
+      quantity: `${quantity}`,
+      size: activeSize,
+      title: productItem.title,
+      url: productItem.url,
+      price: productItem.price,
+
+    })
+
+    Axios.post('http://localhost:5000/user-cart-count',{
+      
+    })
+  }
 
   return (
     <div class="product-page-container">
@@ -224,7 +256,8 @@ const ProductPage = function () {
 
           <div class="product-buttons">
             <div class="ptp">
-              <button class="add-to-cart">Add to Cart</button>
+            
+              <button class="add-to-cart" onClick={addProductToCart}>Add to Cart</button>
             </div>
 
               <div class="ptp">
@@ -236,6 +269,7 @@ const ProductPage = function () {
                 price: `${productItem.price}`,
                 title: `${productItem.title}`,
                 category: `${category}`,
+                userGoog: userGoog
               }}
               to={`/checkout/${id}`}
             >

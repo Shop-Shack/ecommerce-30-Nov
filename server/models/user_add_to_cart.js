@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const user = new mongoose.Schema({
+const userCart = new mongoose.Schema({
 
 //user-id
 //array of products in the cart
@@ -27,10 +27,7 @@ add_to_cart_arr: {
 
 
 
-
-
-
-
-
-
 })
+
+const FirstSch = mongoose.model("userCart", userCart);
+module.exports = FirstSch;

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const collectionCard = function ({dataPID, title, url, price, category}) {
   return (
-    <div class="collection-card">
+    <div class="collection-card" id={dataPID}>
     <Link to={`/${category}/product/${dataPID}`}>
         <img src={url} class="collection-cardimage" />
         <div class="collection-card-desc">

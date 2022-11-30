@@ -95,7 +95,7 @@ const Checkout = function () {
               }}
             >
               <div className="chkout-chkout">
-                <button class="chkout-chkout" type="submit">
+                <button class="chkout-chkout" type="submit" name="checkout_button">
                   Confirm Order
                 </button>
               </div>

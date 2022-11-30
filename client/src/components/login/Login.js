@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import "./Login.css";
 import { HiShoppingBag, HiOutlineUserCircle } from "react-icons/hi";
@@ -10,6 +10,71 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 
 const Login = function () {
+
+  let [log_email, setEmail] = useState();
+  let [log_password, setPassword] = useState();
+
+  const handleEmail = function(e){
+
+    let log_email = e.target.value;
+
+  console.log(log_email);
+  setEmail(log_email);
+
+}
+const handlePassword = function(e){
+  
+  let log_password = e.target.value;
+  
+  console.log(log_password);
+    setPassword(log_password);
+
+  }
+
+  // useEffect(()=>{
+
+  //   if(localStorage.getItem('token')!='undefined'){
+  //   axios.post('http://localhost:5000/login', {
+  //     access_token: localStorage.getItem('token')
+  //   })
+  //   .then(response=>{
+  //     // console.log(response)
+  //     console.log(response.data);
+  //     localStorage.setItem('token',response.data.token);
+  //     window.location=response.data.redirect;
+  //   })
+  // }else{
+  //   console.log('login babe')
+  // }
+
+  // })
+
+  const handleSubmit = function(e) {
+    // e.preventDefault();
+
+    console.log('click submit')
+
+    axios.post('http://localhost:5000/login', {
+      log_email:log_email, log_password:log_password
+    })
+    .then(response=>{
+      // console.log(response)
+      console.log(response.data);
+      localStorage.removeItem("userGoog");
+      localStorage.setItem('token',response.data.token);
+      
+      window.location=response.data.redirect;
+    })
+  }
+
+  // axios.get('http://localhost:5000/login')
+  // .then(response=>{
+  //   console.log(response);
+  // })
+  // .catch(err => console.log(err));
+
+  
+  
   let googleDataResponse;
 
   const loginGoogle = useGoogleLogin({
@@ -34,8 +99,11 @@ const Login = function () {
               .then(function (response) {
                 console.log(response);
                 if (response.data.redirect == "/") {
+                  localStorage.clear();
+                  localStorage.setItem('userGoog',response.data.userGoog);
                   window.location = "/";
                 } else if (response.data.redirect == "/login") {
+                  localStorage.clear();
                   window.location = "/login";
                 }
               })
@@ -63,11 +131,11 @@ const Login = function () {
           <div class="login-shopshack-text">Shop.Shack</div>
         </div>
 
-        <form action="/login" method="post">
+        {/* <form action="/login" method="post"> */}
           <div class="login-outline">
             <div class="login-e-mail-div">
               <div class="login-email-txt">E-mail</div>
-              <input class="login-email-input" type="email" name="log_email" />
+              <input class="login-email-input" type="email" name="log_email" onChange={handleEmail} value={log_email}/>
             </div>
 
             <div class="login-password-div">
@@ -76,12 +144,14 @@ const Login = function () {
                 type="password"
                 class="login-password-input"
                 name="log_pass"
+                onChange={handlePassword}
+                value={log_password}
               />
             </div>
             <div class="login-logreg">
-              <button type="submit" class="login-btn">
+              <div  class="login-btn" onClick={handleSubmit}>
                 Login
-              </button>
+              </div>
 
               <Link to="/register">
                 <button class="login-reg-btn">Register</button>
@@ -98,7 +168,7 @@ const Login = function () {
               </div>
             </div>
           </div>
-        </form>
+        {/* </form> */}
       </div>
     </div>
   );

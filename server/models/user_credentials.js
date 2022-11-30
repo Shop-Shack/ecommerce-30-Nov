@@ -28,13 +28,12 @@ const user = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  tokens: [{
-    token:{
+  token:{
       type: String,
       required: true
 
     }
-  }]
+
 });
 
 const FirstSch = mongoose.model("UserCredential", user);

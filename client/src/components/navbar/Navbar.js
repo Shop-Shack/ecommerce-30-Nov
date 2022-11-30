@@ -5,7 +5,7 @@ import { HiShoppingBag, HiOutlineUserCircle } from "react-icons/hi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const navbar = function () {
+const navbar = function ({cartCount, setCartCount}) {
   return (
     <div className="navbar">
       <div className="Brand">

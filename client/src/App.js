@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import ReactDOM from "react-dom/client";
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
@@ -29,10 +29,12 @@ import {
 } from "react-router-dom";
 
 const App = () => {
+
+  let [cartCount, setCartCount] = useState(); 
   return (
     <Router>
       <div className="App">
-        <Navbar></Navbar>
+        <Navbar cart={cartCount} setCartCount={setCartCount}></Navbar>
 
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -42,9 +44,9 @@ const App = () => {
           <Route path="/kids" element={<KidsCollection />} />
           <Route path="/men" element={<MenCollection />} />
           <Route path="/women" element={<WomenCollection />} />
-          <Route path="/women/product/:id" element={<Product />} />
-          <Route path="/men/product/:id" element={<Product />} />
-          <Route path="/kids/product/:id" element={<Product />} />
+          <Route path="/women/product/:id" element={<Product cart={cartCount} setCartCount={setCartCount}/>} />
+          <Route path="/men/product/:id" element={<Product cart={cartCount} setCartCount={setCartCount}/>} />
+          <Route path="/kids/product/:id" element={<Product cart={cartCount} setCartCount={setCartCount} />} />
           <Route path="/checkout/:id" element={<Checkout />} />
           <Route path="/order-summary" element={<OrderSummary />} />
           <Route path="/checkout" element={<Checkout />} />
