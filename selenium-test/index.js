@@ -8,21 +8,26 @@ async function example(){
     // await driver.get("http://www.google.com");
     // await driver.get("http://localhost:3000/register");
     // // await driver.findElement(By.name('q')).sendKeys('Selenium', Key.RETURN);
-    // await driver.findElement(By.name('reg_name')).sendKeys('Srushti', Key.RETURN);
-    // await driver.findElement(By.name('reg_email')).sendKeys('srushant23324@gmail.com', Key.RETURN);
-    // await driver.findElement(By.name('reg_pass')).sendKeys('123', Key.RETURN);
-    // await driver.findElement(By.name('reg_pass_conf')).sendKeys('123', Key.RETURN);
+    // await driver.findElement(By.name('reg_name')).sendKeys('Matt Long', Key.RETURN);
+    // await driver.findElement(By.name('reg_email')).sendKeys('zeke828@gmail.com', Key.RETURN);
+    // await driver.findElement(By.name('reg_pass')).sendKeys('12345', Key.RETURN);
+    // await driver.findElement(By.name('reg_pass_conf')).sendKeys('12345', Key.RETURN);
+    // console.log('\x1b[92m Register Test Successful! Test Case: Passed \x1b[0m');
     
-    // await driver.get("http://localhost:3000/login");
-    // await driver.findElement(By.name('log_email')).sendKeys('srushant23324@gmail.com', Key.RETURN);
-    // await driver.findElement(By.name('log_pass')).sendKeys('123', Key.RETURN);
+    await driver.get("http://localhost:3000/login");
+    await driver.findElement(By.name('log_email')).sendKeys('zeke828@gmail.com', Key.RETURN);
+    await driver.findElement(By.name('log_pass')).sendKeys('12345', Key.RETURN);
+    let login = await driver.wait(until.elementLocated(By.name('login-btn')), 300000);
+    await login.click();
+    console.log('\x1b[92m Login Test Successful! Test Case: Passed \x1b[0m');
 
-    await driver.get("http://localhost:3000/");
-    let shopNow = await driver.wait(until.elementLocated(By.id('shopNowText')), 30000);
+
+    // await driver.get("http://localhost:3000/");
+    let shopNow = await driver.wait(until.elementLocated(By.id('shopNowText')), 300000);
     await shopNow.click();
     
     // await driver.get("http://localhost:3000/shop");
-    let wCard = await driver.wait(until.elementLocated(By.id('women-card')), 30000);
+    let wCard = await driver.wait(until.elementLocated(By.id('women-card')), 300000);
     await wCard.click();
     
     
@@ -30,7 +35,7 @@ async function example(){
     
     
     // await driver.get("http://localhost:3000/women");
-    let product = await driver.wait(until.elementLocated(By.id('P60547907')), 30000);
+    let product = await driver.wait(until.elementLocated(By.id('P60547907')), 300000);
     
     await driver.actions()
       .scroll(0, 0, 0, 150, product)
@@ -39,9 +44,9 @@ async function example(){
     await product.click();
     
     //Product Page
-    let add = await driver.wait(until.elementLocated(By.className('add')), 30000);
-    let proceedToPurchase = await driver.wait(until.elementLocated(By.className('proceed-to-purchase')), 30000);
-    let size = await driver.wait(until.elementLocated(By.id('M')), 30000);
+    let add = await driver.wait(until.elementLocated(By.className('add')), 300000);
+    let proceedToPurchase = await driver.wait(until.elementLocated(By.className('proceed-to-purchase')), 300000);
+    let size = await driver.wait(until.elementLocated(By.id('M')), 300000);
     
     let quant = 2;
     for(let i = 0; i<quant; i++){
@@ -65,19 +70,43 @@ async function example(){
 
     await proceedToPurchase.click();
 
+    
+    
+    await driver.wait(until.elementLocated((By.name('checkout_name'))),300000).sendKeys('Matt Long', Key.RETURN);
 
+    let promise2 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("Hello World!"), 6000)
+    });
+  
+    let result2 = await promise2; // wait until the promise resolves (*)
 
-    await driver.wait(until.elementLocated((By.name('checkout_name'))),30000).sendKeys('Srushti Haryan', Key.RETURN);
-    await driver.wait(until.elementLocated((By.name('checkout_phoneno'))),30000).sendKeys('9898989898', Key.RETURN);
-    await driver.wait(until.elementLocated((By.name('checkout_email'))),30000).sendKeys('9898989898', Key.RETURN);
-    await driver.wait(until.elementLocated((By.name('checkout_addr'))),30000).sendKeys('Kandivali, Mumbai-400101, Maharashtra', Key.RETURN);
+    await driver.wait(until.elementLocated((By.name('checkout_phoneno'))),300000).sendKeys('9898989898', Key.RETURN);
+
+    let promise3 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("Hello World!"), 6000)
+    });
+  
+    let result3 = await promise3; // wait until the promise resolves (*)
+    await driver.wait(until.elementLocated((By.name('checkout_email'))),300000).sendKeys('zeke828@gmail.com', Key.RETURN);
+
+    let promise4 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("Hello World!"), 20000)
+    });
+  
+    let result4 = await promise4; // wait until the promise resolves (*)
+    await driver.wait(until.elementLocated((By.name('checkout_addr'))),300000).sendKeys('Kandivali, Mumbai-400101, Maharashtra', Key.RETURN);
     // await driver.findElement(By.name('checkout_button')).click();
 
     
     
-    await promise; // wait until the promise resolves (*)
-    let checkoutButton = await driver.wait(until.elementLocated((By.name('checkout_button'))), 30000);
+    let checkoutButton = await driver.wait(until.elementLocated((By.name('checkout_button'))), 300000);
     checkoutButton.click();
+
+    //checkout ka link dikha rha hai
+    
+    let url = await driver.getCurrentUrl(until.urlContains('orderPlace'))
+    console.log('\x1b[92m] '+url);
+    console.log('\x1b[92m  Order Place Test Successful! Test Case: Passed \x1b[0m ')
 
     
     

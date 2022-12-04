@@ -110,7 +110,7 @@ const Register = function(){
             <div class="register-Glogin">
               
               <div class="register-reg">
-              <button type="submit">
+              <button type="submit" name="register-btn">
                 Register
                 </button>
               </div>

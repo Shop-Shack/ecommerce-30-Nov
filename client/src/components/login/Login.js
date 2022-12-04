@@ -149,7 +149,7 @@ const handlePassword = function(e){
               />
             </div>
             <div class="login-logreg">
-              <div  class="login-btn" onClick={handleSubmit}>
+              <div  class="login-btn" onClick={handleSubmit} name="login-btn">
                 Login
               </div>
 

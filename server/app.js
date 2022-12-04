@@ -493,7 +493,7 @@ app.post("/checkout", (req, res) => {
     }
 
     console.log("Order Data inserted successfully");
-    res.redirect("/");
+    // res.redirect("/");
   });
 });
 

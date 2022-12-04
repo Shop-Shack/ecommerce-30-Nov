@@ -19,8 +19,55 @@ const Checkout = function () {
   const location = useLocation();
   console.log(location);
 
+  const [nameR,setNameR] = useState();
+  const [phone,setPhone] = useState();
+  const [email,setEmail] = useState();
+  const [add,setAdd] = useState();
+
+  const handleName = (e)=>{
+    nameR = e.target.value;
+    setNameR(nameR);
+    
+
+  }
+  const handlePhone = (e)=>{
+    
+    phone = e.target.value;
+    setPhone(phone);
+    
+    
+  }
+  const handleEmail = (e)=>{
+    
+    email = e.target.value;
+    setEmail(email);
+    
+
+  }
+  const handleAdd = (e)=>{
+
+    add = e.target.value;
+    setAdd(add);
+    
+
+  }
+
+const sendOrderData = () =>{
+
+ 
+
+  
+  axios.post('http://localhost:5000/checkout',{
+  checkout_name:nameR,
+  checkout_phoneno:phone,
+  checkout_email:email,
+  checkout_addr:add
+  })
+
+}
+
   return (
-    <form action="/checkout" method="post">
+    // <form action="/checkout" method="post">
       <div className="chkout-lr-cont">
         <div class="chkout-left">
           <div className="chkout-outline">
@@ -33,6 +80,7 @@ const Checkout = function () {
                 name="checkout_name"
                 id=""
                 required
+                onChange = {handleName}
               />
               <div class="chkout-phone-txt">Phone</div>
               <input
@@ -41,6 +89,7 @@ const Checkout = function () {
                 name="checkout_phoneno"
                 id=""
                 required
+                onChange = {handlePhone}
               />
               <div class="chkout-email-txt">Email</div>
               <input
@@ -49,6 +98,7 @@ const Checkout = function () {
                 name="checkout_email"
                 id=""
                 required
+                onChange = {handleEmail}
               />
             </div>
 
@@ -61,6 +111,7 @@ const Checkout = function () {
                 name="checkout_addr"
                 id=""
                 required
+                onChange = {handleAdd}
               />
             </div>
 
@@ -95,7 +146,7 @@ const Checkout = function () {
               }}
             >
               <div className="chkout-chkout">
-                <button class="chkout-chkout" type="submit" name="checkout_button">
+                <button class="chkout-chkout"  name="checkout_button" onClick={sendOrderData}>
                   Confirm Order
                 </button>
               </div>
@@ -103,7 +154,7 @@ const Checkout = function () {
           </div>
         </div>
       </div>
-    </form>
+    // </form>
   );
 };
 export default Checkout;
