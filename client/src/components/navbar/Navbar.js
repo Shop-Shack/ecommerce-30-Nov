@@ -37,7 +37,7 @@ const navbar = function ({cartCount, setCartCount}) {
         </Link>
       </ul>
       <div className="cart-profile">
-        <MdOutlineShoppingCart />
+        {/* <MdOutlineShoppingCart /> */}
         <HiOutlineUserCircle />
       </div>
     </div>

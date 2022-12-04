@@ -255,10 +255,10 @@ const ProductPage = function ({cartCount, setCartCount}) {
           </div>
 
           <div class="product-buttons">
-            <div class="ptp">
+            {/* <div class="ptp">
             
               <button class="add-to-cart" onClick={addProductToCart}>Add to Cart</button>
-            </div>
+            </div> */}
 
               <div class="ptp">
             <Link
