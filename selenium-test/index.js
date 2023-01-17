@@ -14,17 +14,36 @@ async function example(){
     // await driver.findElement(By.name('reg_pass_conf')).sendKeys('12345', Key.RETURN);
     // console.log('\x1b[92m Register Test Successful! Test Case: Passed \x1b[0m');
     
-    await driver.get("http://localhost:3000/login");
+    await driver.get("http://localhost:3000/");
     await driver.findElement(By.name('log_email')).sendKeys('zeke828@gmail.com', Key.RETURN);
     await driver.findElement(By.name('log_pass')).sendKeys('12345', Key.RETURN);
     let login = await driver.wait(until.elementLocated(By.name('login-btn')), 300000);
     await login.click();
-    console.log('\x1b[92m Login Test Successful! Test Case: Passed \x1b[0m');
+    
 
 
-    // await driver.get("http://localhost:3000/");
-    let shopNow = await driver.wait(until.elementLocated(By.id('shopNowText')), 300000);
+    // await driver.get("http://localhost:3000/home");
+    
+    try{
+      let shopNow = await driver.wait(until.elementLocated(By.id('shopNowText')), 20000);
+    shopNow.getText().then(function(s) {
+      console.log(s);
+      if(s==='Shop Now'){
+
+        console.log('\x1b[92m Login Test Successful! Test Case: Passed \x1b[0m');
+      }else{
+        
+      }
+       
+    });
     await shopNow.click();
+
+    }catch(e){
+    console.log('\x1b[31m Login Test Failed! Test Case: Failed \x1b[0m');
+return;
+    }
+    
+    
     
     // await driver.get("http://localhost:3000/shop");
     let wCard = await driver.wait(until.elementLocated(By.id('women-card')), 300000);
@@ -101,12 +120,34 @@ async function example(){
     
     let checkoutButton = await driver.wait(until.elementLocated((By.name('checkout_button'))), 300000);
     checkoutButton.click();
-
-    //checkout ka link dikha rha hai
     
-    let url = await driver.getCurrentUrl(until.urlContains('orderPlace'))
-    console.log('\x1b[92m] '+url);
-    console.log('\x1b[92m  Order Place Test Successful! Test Case: Passed \x1b[0m ')
+    //checkout ka link dikha rha hai
+
+    let promise5 = new Promise((resolve, reject) => {
+      setTimeout(() => resolve("Hello World!"), 20000)
+    });
+  
+    let result5 = await promise5; // wait until the promise resolves (*)
+    
+
+    try {
+      
+      let elem = driver.wait(until.elementLocated((By.className('message'))));
+       elem.getText().then(function(s) {
+         console.log(s);
+         if(s==='Thank you, your order has been place'){
+   
+           console.log('\x1b[92m  Order Place Test Successful! Test Case: Passed \x1b[0m ')
+         }else{
+
+           console.log('\x1b[31m Order Place Test Failed! Test Case: Failed \x1b[0m');
+         }
+        
+      });
+    } catch (error) {
+      
+    }
+    
 
     
     

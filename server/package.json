@@ -680,6 +680,7 @@
     "strip-final-newline": "^2.0.0",
     "strip-indent": "^3.0.0",
     "strip-json-comments": "^3.1.1",
+    "stripe": "^11.5.0",
     "style-loader": "^3.3.1",
     "stylehacks": "^5.1.0",
     "supports-color": "^5.5.0",

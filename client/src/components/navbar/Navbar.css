@@ -46,14 +46,33 @@ body {
 
 .cart-profile {
   display: flex;
+  flex-direction:row;
   cursor: pointer;
   padding-right: 3rem;
+  align-items:center;
   gap: 2rem;
+  /* display:flex; */
 
   /* background-color: blue; */
 }
 .cart-profile svg{
+  /* margin-top:1rem; */
+ 
 font-size: 2rem;
+
+  /* background-color: blue; */
+}
+
+.logout{
+  opacity:0;
+  color: white;
+}
+.cart-profile:hover .logout{
+  /* font-size: 2rem; */
+  color: white;
+opacity:100;
+z-index:500;
+
 
   /* background-color: blue; */
 }

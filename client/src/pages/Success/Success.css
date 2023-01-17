@@ -1,0 +1,14 @@
+.payment-container{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+}
+
+.payment-container h1{
+    font-size:1.5em;
+    color:white;
+}
+.payment-container img{
+    width: 300px;
+}

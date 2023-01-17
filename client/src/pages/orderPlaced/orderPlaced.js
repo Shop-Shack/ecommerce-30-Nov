@@ -8,26 +8,44 @@ import OrderPlaced from "../../components/order-placed/OrderPlaced";
 import CollectionCard from "../../components/collection-card/Collection-card";
 
 const Order_placed = function () {
-  const location = useLocation();
-  const cat = location.state.category;
+  // const location = useLocation();
+
+  let [orderDetails,setOrderDetails] =useState({})
+  let [cat,setCat] =useState()
+  
+  
   const [clothes, setClothes] = useState([]);
-  //   let type = { category: "kids" };
-  let type = { category: `${cat}` };
+    // let type = { category: "kids" };
+  let type = { category: `${cat}` }; 
+// 
+useEffect(() => {
+  axiosClothes();
+});
+// console.log(cat);
 
-  let fetchURL;
+let fetchURL;
+
+
+
+const axiosClothes = async () => {
+  const res = await axios.get('http://localhost:5000/orderPlace')
+  
+  
+  // console.log(res.data);
+  setOrderDetails(res.data);
+  setCat(res.data.product_category);
+  // console.log(cat)
+  
   if (cat == "women")
-    fetchURL = `https://srushtiharyan.github.io/ecommerce-women-clothes-api/db.json`;
+  fetchURL = `https://srushtiharyan.github.io/ecommerce-women-clothes-api/db.json`;
   if (cat == "men")
-    fetchURL = `https://madhurachitale.github.io/ecommerce-men-clothes-api/db.json`;
+  fetchURL = `https://madhurachitale.github.io/ecommerce-men-clothes-api/db.json`;
   if (cat == "kids")
-    fetchURL = `https://md-1107.github.io/ecommerce-kids-clothes-api/db.json`;
+  fetchURL = `https://md-1107.github.io/ecommerce-kids-clothes-api/db.json`;
+  
+  const response = await axios.get(fetchURL);
+    
 
-  useEffect(() => {
-    axiosClothes();
-  }, []);
-
-  const axiosClothes = async () => {
-    const response = await axios.get(fetchURL);
     if (cat == "women") {
       {
         // return response.data.wClothesData;

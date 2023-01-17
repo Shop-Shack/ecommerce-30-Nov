@@ -54,7 +54,7 @@ const handlePassword = function(e){
 
     console.log('click submit')
 
-    axios.post('http://localhost:5000/login', {
+    axios.post('http://localhost:5000/', {
       log_email:log_email, log_password:log_password
     })
     .then(response=>{
@@ -95,16 +95,16 @@ const handlePassword = function(e){
             console.log(userGoogData);
 
             axios
-              .post("http://localhost:5000/login", userGoogData)
+              .post("http://localhost:5000/", userGoogData)
               .then(function (response) {
                 console.log(response);
-                if (response.data.redirect == "/") {
+                if (response.data.redirect == "/home") {
                   localStorage.clear();
                   localStorage.setItem('userGoog',response.data.userGoog);
-                  window.location = "/";
-                } else if (response.data.redirect == "/login") {
+                  window.location = "/home";
+                } else if (response.data.redirect == "/") {
                   localStorage.clear();
-                  window.location = "/login";
+                  window.location = "/";
                 }
               })
               .catch((err) => console.error(err));

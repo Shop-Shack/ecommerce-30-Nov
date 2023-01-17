@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const user_det = require("./models/user_credentials");
 const order_det = require("./models/order_details");
-const add_to_cart_det = require("./models/user_add_to_cart");  
+const add_to_cart_det = require("./models/user_add_to_cart");
 const { cs } = require("date-fns/locale");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -62,16 +62,20 @@ let email, password, confPassword, name, userToken;
 //   return res.json({ message: "Hello, This is homepage!", ...verifyUser });
 // });
 
-const getJWTDeets = function(token){
+const getJWTDeets = function (token) {
 
-  verifyUser = jwt.verify(token,"shop.shack.madmanrush.spit.ac.in");
+  verifyUser = jwt.verify(token, "shop.shack.madmanrush.spit.ac.in");
   console.log(verifyUser);
   console.log('verified');
 
-      let redir = { redirect: "/", email:verifyUser.email}
-      res.json(redir);
+  let redir = { redirect: "/home", email: verifyUser.email }
+  res.json(redir);
 
 }
+
+app.get('/home', (req, res) => {
+  return res.json({ messsage: "Home It is" })
+});
 
 app.get("/women", (req, res) => {
   res.json({ message: "Women's page is displayed" });
@@ -183,7 +187,7 @@ app.post("/register", (req, res) => {
                 console.log("Record inserted successfully");
               });
 
-            res.redirect("/login");
+            res.redirect("/");
           }
         } else {
           console.log("Email ID exists");
@@ -201,14 +205,14 @@ app.post("/register", (req, res) => {
 
 // })
 
-app.post("/login", (req, res) => {
+app.post("/", (req, res) => {
   let name, email, userToken;
   var credential = new user_det();
 
   console.log(req.body)
 
 
-  
+
 
   const userGoogdata = req.body;
   console.log(userGoogdata);
@@ -222,7 +226,7 @@ app.post("/login", (req, res) => {
     ACCESS_TOKEN = req.body.access_token;
     console.log("in post/login" + ACCESS_TOKEN);
 
-   
+
 
     let mailTransporter = nodemailer.createTransport({
       service: "gmail",
@@ -266,41 +270,41 @@ app.post("/login", (req, res) => {
               }
               console.log("Google user Record inserted successfully");
 
-              
 
-              let redir = { redirect: "/", ...userGoogdata, userGoog:true };
+
+              let redir = { redirect: "/home", ...userGoogdata, userGoog: true };
               return res.json(redir);
             });
         } else {
           console.log("This google user is existing");
-          let redir = { redirect: "/" , userGoog:true };
+          let redir = { redirect: "/home", userGoog: true };
           return res.json(redir);
         }
       });
   } else {
     const { body } = req;
 
-    let verifyUser={};
+    let verifyUser = {};
     console.log(body.access_token);
 
     email = req.body.log_email;
     password = req.body.log_password;
-      
 
-    if(req.body.access_token===undefined){
+
+    if (req.body.access_token === undefined) {
 
       email = req.body.log_email;
       password = req.body.log_password;
-      
-      
-      
-    }else{
-      
-      verifyUser = jwt.verify(req.body.access_token,"shop.shack.madmanrush.spit.ac.in");
+
+
+
+    } else {
+
+      verifyUser = jwt.verify(req.body.access_token, "shop.shack.madmanrush.spit.ac.in");
       console.log(verifyUser);
       console.log('verified');
 
-      let redir = { redirect: "/", token: req.body.access_token}
+      let redir = { redirect: "/home", token: req.body.access_token }
       res.json(redir);
     }
 
@@ -316,69 +320,69 @@ app.post("/login", (req, res) => {
         }
         if (items.length == 0) {
           console.log("not found");
-          res.redirect("/login");
+          res.redirect("/");
         } else {
-          if(req.body.access_token==undefined){
-          try {
+          if (req.body.access_token == undefined) {
+            try {
 
-            const token = jwt.sign(
-              { email: email },
-              "shop.shack.madmanrush.spit.ac.in"
-            );
-            console.log(token);
-            userToken = token;
-            
-
-            var myquery = { email_id: email };
-            var newvalues = { $set: { token: userToken } };
-            database
-              .collection("usercredentials")
-              .updateOne(myquery, newvalues, function (err, res) {
-                if (err) throw err;
-                console.log("1 document updated");
-                // database.close();
-              });
+              const token = jwt.sign(
+                { email: email },
+                "shop.shack.madmanrush.spit.ac.in"
+              );
+              console.log(token);
+              userToken = token;
 
 
-        
+              var myquery = { email_id: email };
+              var newvalues = { $set: { token: userToken } };
+              database
+                .collection("usercredentials")
+                .updateOne(myquery, newvalues, function (err, res) {
+                  if (err) throw err;
+                  console.log("1 document updated");
+                  // database.close();
+                });
+
+
+
 
               // localStorage.setItem('token',token);
 
-            // res.cookie("jwt", `${token}`, {
-            //   expires: new Date(Date.now() + 120000),
-            //   httpOnly: true,
-            // });
+              // res.cookie("jwt", `${token}`, {
+              //   expires: new Date(Date.now() + 120000),
+              //   httpOnly: true,
+              // });
 
-            console.log(`This is a token login ${token}`);
+              console.log(`This is a token login ${token}`);
 
-            let redir = { redirect: "/", token: userToken, userGoog:false}
+              let redir = { redirect: "/home", token: userToken, userGoog: false }
+              res.json(redir)
+
+
+            } catch (err) {
+              console.log(err);
+            }
+
+          } else {
+            console.log(`token existing: ${req.body.access_token}`);
+
+            let redir = { redirect: "/home", token: userToken }
             res.json(redir)
 
 
-          } catch (err) {
-            console.log(err);
           }
 
-        }else{
-          console.log(`token existing: ${req.body.access_token}`);
-
-          let redir = { redirect: "/", token: userToken}
-          res.json(redir)
-
-
-        }
-          
         }
       });
   }
 
-  
+
 
 });
 
 app.post("/post", (req, res) => {
   console.log("Connected to React");
-  res.redirect("/");
+  res.redirect("/home");
 });
 
 var cname;
@@ -411,52 +415,53 @@ app.post("/checkout/:id", async (req, res) => {
   size = req.body.size;
   quantity = req.body.quantity;
 
-  let userGoog=req.body.userGoog;
+  let userGoog = req.body.userGoog;
   console.log(req.body);
 
 
-  if(req.body.userGoog=='true'){
+  if (req.body.userGoog == 'true') {
 
-    
-    
+
+
     const eventStartTime = new Date();
     const eventEndTime = new Date();
-    
+
     eventEndTime.setDate(eventEndTime.getDate() + 2);
     eventStartTime.setDate(eventStartTime.getDate() + 2);
-    
+
     eventEndTime.setMinutes(eventEndTime.getMinutes() + 40);
-    
+
     console.log(ACCESS_TOKEN);
     // console.log(access_token);
-  oauth2Client.setCredentials({ access_token: ACCESS_TOKEN });
-  const calendar = google.calendar("v3");
-  const response = await calendar.events.insert({
-    auth: oauth2Client,
-    calendarId: "primary",
-    requestBody: {
-      summary: `Shop.Shack product delivery`,
-      description:
-        "This is to remind you that your order arrives today, please ensure that the order will be received. Happy Shopping!",
-      // location: location,
-      colorId: 6,
-      start: {
-        dateTime: eventStartTime,
-        timeZone: "Asia/Kolkata",
+    oauth2Client.setCredentials({ access_token: ACCESS_TOKEN });
+    const calendar = google.calendar("v3");
+    const response = await calendar.events.insert({
+      auth: oauth2Client,
+      calendarId: "primary",
+      requestBody: {
+        summary: `Shop.Shack product delivery`,
+        description:
+          "This is to remind you that your order arrives today, please ensure that the order will be received. Happy Shopping!",
+        // location: location,
+        colorId: 6,
+        start: {
+          dateTime: eventStartTime,
+          timeZone: "Asia/Kolkata",
+        },
+        end: {
+          dateTime: eventEndTime,
+          timeZone: "Asia/Kolkata",
+        },
       },
-      end: {
-        dateTime: eventEndTime,
-        timeZone: "Asia/Kolkata",
-      },
-    },
-  });
+    });
 
-  console.log("The event is created");
-}else{
-  console.log('u are not a google user')
-}
+    console.log("The event is created");
+  } else {
+    console.log('u are not a google user')
+  }
 });
 
+let order_deets = {}
 app.post("/checkout", (req, res) => {
   console.log(req.body);
   cname = req.body.checkout_name;
@@ -484,7 +489,11 @@ app.post("/checkout", (req, res) => {
   orders.address = caddr;
   orders.dateOfBuy = convertDate(new Date());
   orders.totalPrice = ctotal_cost;
+  
+  orders.product_category = req.body.checkout_category;
 
+  order_deets = orders;
+  
   console.log(orders);
   database.collection("orderdatas").insertOne(orders, (err, collection) => {
     if (err) {
@@ -494,11 +503,15 @@ app.post("/checkout", (req, res) => {
 
     console.log("Order Data inserted successfully");
     // res.redirect("/");
+    
   });
 });
 
+app.get('/orderPlace', (req,res)=>{
+  return res.json(order_deets);
+})
 
-app.post('/user-cart',(req,res)=>{
+app.post('/user-cart', (req, res) => {
 
 
   const orderData = req.body;
@@ -508,6 +521,47 @@ app.post('/user-cart',(req,res)=>{
   const userCart = new add_to_cart_det();
 
 });
+
+
+// This is a public sample test API key.
+// Don’t submit any personally identifiable information in requests made with this key.
+// Sign in to see your own test API key embedded in code samples.
+const stripe = require('stripe')('sk_test_51MIC9dSJVItasy1VX8W1tehalLXmIMAJWskEjUuPCNdKJ9D3ilyBDMx2PmOQrqP8jJXs7BgL5FVuXYaauut2fnpq008wfWI8De');
+
+app.use(express.static('public'));
+
+const YOUR_DOMAIN = 'http://localhost:3000';
+
+app.post('/create-checkout-session', async (req, res) => {
+
+  console.log('----------------');
+  console.log(req.body);
+  const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price_data: {
+          currency: "inr",
+         product_data:{
+          name:req.body.title,
+         },
+         unit_amount:req.body.price*100,
+
+        }
+        ,
+        quantity:1
+      },
+    ],
+    mode: 'payment',
+    success_url: `http://localhost:3000/success`,
+    cancel_url: `${YOUR_DOMAIN}/canceled`,
+  });
+
+  console.log(session.url)
+  return res.json({ url: session.url });
+});
+
+
 
 function convertDate(str) {
   var date = new Date(str),

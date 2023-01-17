@@ -6,6 +6,7 @@ import Product from "./components/product-page/Product";
 import Cards from "./components/category-cards/Cards";
 import Checkout from "./components/checkout/Checkout";
 import OrderPlaced from "./pages/orderPlaced/orderPlaced";
+import Success from "./pages/Success/Success";
 
 import OrderSummary from "./pages/order-summary/OrderSummary";
 
@@ -37,7 +38,7 @@ const App = () => {
         <Navbar cart={cartCount} setCartCount={setCartCount}></Navbar>
 
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/home" element={<Homepage />} />
           <Route path="/contact" exact element={<Contact />} />
           <Route path="/shop" element={<Categories />} />
           <Route path="/register" element={<AuthIn />} />
@@ -53,8 +54,9 @@ const App = () => {
           <Route path="/orderPlace" element={<OrderPlaced />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/hey" element={<Product />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/add-to-cart" element={<Cart />} />
+          <Route path="/success" element={<Success />} />  
         </Routes>
       </div>
     </Router>

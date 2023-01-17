@@ -16,13 +16,39 @@ const Checkout = function () {
 
   // }
 
+  let [cost, setCost] = useState();
+  let [quant, setQuant] = useState();
+  let [total, setTotal] = useState();
+
   const location = useLocation();
   console.log(location);
 
-  const [nameR,setNameR] = useState();
-  const [phone,setPhone] = useState();
-  const [email,setEmail] = useState();
-  const [add,setAdd] = useState();
+useEffect(()=>{
+  
+  let price = location.state.price;
+  price =  price.slice(2,price.length)
+  price = price.replaceAll(',','')
+  price = price.slice(0,-4);
+  price = Number(price);
+  quant = Number(location.state.quantity);
+  
+  setTimeout(()=>{
+
+  }, 2000)
+  console.log(price)
+  setCost(price)
+  setTotal(price*quant);
+
+ 
+
+})
+
+
+
+  let [nameR,setNameR] = useState();
+  let [phone,setPhone] = useState();
+  let [email,setEmail] = useState();
+  let [add,setAdd] = useState();
 
   const handleName = (e)=>{
     nameR = e.target.value;
@@ -61,7 +87,28 @@ const sendOrderData = () =>{
   checkout_name:nameR,
   checkout_phoneno:phone,
   checkout_email:email,
-  checkout_addr:add
+  checkout_addr:add,
+  checkout_category: location.state.category
+
+  })
+
+  axios.post('http://localhost:5000/create-checkout-session',
+  {
+    image: location.state.url,
+    title:location.state.title,
+    price: total,
+    name: nameR,
+    category: location.state.category
+
+
+  })
+  .then(function (response){
+
+    console.log(response.data)
+    if(response.data.url){
+      window.location =response.data.url
+    }
+
   })
 
 }
@@ -136,21 +183,21 @@ const sendOrderData = () =>{
             <div className="chkout-quant">
               Quantity: {location.state.quantity}
             </div>
-            <div className="chkout-price">Total :{location.state.price}</div>
-            <Link
+            <div className="chkout-price">Total : ₹ {total}.00</div>
+            {/* <Link
               to="/orderPlace"
               state={{
                 title: `${location.state.title}`,
                 url: `${location.state.url}`,
                 category: `${location.state.category}`,
               }}
-            >
+            > */}
               <div className="chkout-chkout">
                 <button class="chkout-chkout"  name="checkout_button" onClick={sendOrderData}>
                   Confirm Order
                 </button>
               </div>
-            </Link>
+            {/* </Link> */}
           </div>
         </div>
       </div>
